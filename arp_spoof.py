@@ -35,11 +35,12 @@ def restore(dst_ip, src_ip):
     scapy.send(packet, verbose=False)
 
 
-# 192.168.148.228 - IP for test
+# 192.168.1.2 - IP for test
+# 192.168.1.3 - IP for test
 os.system("echo 1 > /proc/sys/net/ipv4/ip_forward")
 # os.system("iptables -I FORWARD -j NFQUEUE --queue-num 0")
-aim_ip = ["192.168.136.129", "192.168.136.150"]
-router_ip = "192.168.136.1"
+aim_ip = ["192.168.1.2", "192.168.1.3"]
+router_ip = "192.168.1.1"
 packets_count = 2
 try:
     while True:

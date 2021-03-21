@@ -1,15 +1,9 @@
 #!/usr/bin/env python3
 
-# 04:d4:c4:ec:39:b8 -my real MAC address
 # Script scan network, all new MAC address will be insert into DB(MariaDB)
 # Script can change MAC address, it will be MAC address witch you input with key -m(--mac_address)
 # or script generate new random MAC address
 # Key -i is required, Script can`t work without key -i
-# How does it work.
-# You input required interface. Script find ip address of this interface and start to scan network
-# After scan all new MAC address insert to DB , in the end you can change your MAC address
-# Random MAC address
-# P.S. if you don`t connect to network you also can change MAC address
 
 import scapy.all as scapy
 from tabulate import tabulate
