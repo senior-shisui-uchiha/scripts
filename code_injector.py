@@ -7,6 +7,8 @@ import scapy.all as scapy
 import re as r
 import subprocess
 
+# Set new load into the packet
+
 
 def set_load(packet, load):
     packet[scapy.Raw].load = load
@@ -14,6 +16,9 @@ def set_load(packet, load):
     del packet[scapy.IP].chksum
     del packet[scapy.TCP].chksum
     return packet
+
+
+# Function get packet and will change it
 
 
 def process_packet(packet):

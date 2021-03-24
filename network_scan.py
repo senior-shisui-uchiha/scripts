@@ -22,6 +22,8 @@ def get_arguments():
         parser.error('[-] Please specify an arguments, use --help for more information')
     return option
 
+# Scan network for help ARP request
+
 
 def scan(ip):
     arp_request = scapy.ARP(pdst=ip)
@@ -33,6 +35,8 @@ def scan(ip):
         client_dict = {"ip": item[1].psrc, "mac": item[1].hwsrc}
         client_list.append(client_dict)
     return client_list
+
+# Print Scan result
 
 
 def print_result(client_list):

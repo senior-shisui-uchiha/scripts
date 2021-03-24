@@ -8,6 +8,8 @@ import netfilterqueue
 import scapy.all as scapy
 import subprocess
 
+# Set new load to caught packet
+
 
 def set_load(packet, load):
     packet[scapy.Raw].load = load
@@ -15,6 +17,8 @@ def set_load(packet, load):
     del packet[scapy.IP].chksum
     del packet[scapy.TCP].chksum
     return packet
+
+# Change load from caught packet ,only for http
 
 
 def process_packet(packet):

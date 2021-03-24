@@ -1,5 +1,9 @@
+#!/usr/bin/env python3
+
 import socketserver
 
+
+# Simple TCP server with threading
 
 class ThreadingTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
     pass

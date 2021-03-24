@@ -18,6 +18,8 @@ def sniff(interface):
 def get_url(packet):
     return packet[http.HTTPRequest].Host + packet[http.HTTPRequest].Path
 
+# Looking for possible password and login in caught packet
+
 
 def get_login_info(packet):
     if packet.haslayer(scapy.Raw):
@@ -27,6 +29,8 @@ def get_login_info(packet):
         for keyword in keywords:
             if keyword in load:
                 return load
+
+# Main function with output
 
 
 def proc_sniffer_packet(packet):

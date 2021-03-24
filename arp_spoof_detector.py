@@ -2,6 +2,8 @@
 
 import scapy.all as scapy
 
+# Get ip and return mac in your network
+
 
 def get_mac(ip):
     arp_request = scapy.ARP(pdst=ip)
@@ -13,6 +15,8 @@ def get_mac(ip):
 
 def sniff(interface):
     scapy.sniff(iface=interface, store=False, prn=process_sniffed_packet)
+
+# Looking for changes in ARP table
 
 
 def process_sniffed_packet(packet):

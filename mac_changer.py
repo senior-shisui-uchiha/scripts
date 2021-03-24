@@ -17,12 +17,16 @@ def get_arguments():
         parser.error('[-] Please specify an arguments, use --help for more information')
     return options
 
+# Change mac to new
+
 
 def change_mac(interface, mac_address):
     subprocess.call(["ifconfig", interface, "down"])
     subprocess.call(["ifconfig", interface, "hw", "ether", mac_address])
     subprocess.call(["ifconfig", interface, "up"])
     print('[+] Change Mac Address for %s to %s' % (interface, mac_address))
+
+# It return mac address on your computer in this time
 
 
 def get_current_mac(interface):

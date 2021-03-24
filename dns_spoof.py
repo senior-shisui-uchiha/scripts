@@ -7,6 +7,8 @@ import scapy.all as scapy
 import subprocess
 
 
+# It get dns request and change ip for dns answer, only for http
+
 def process_packet(packet):
     scapy_packet = scapy.IP(packet.get_payload())
     if scapy_packet.haslayer(scapy.DNSRR):

@@ -1,4 +1,6 @@
-# example 2 (UDP unix socket)
+#!/usr/bin/env python3
+# unix udp server
+# Exchange point there is a file unix.sock
 import os
 import socket
 
