@@ -1,3 +1,5 @@
+#!usr/bin/env python
+
 import asyncio
 from asyncio.coroutines import iscoroutine
 import time
