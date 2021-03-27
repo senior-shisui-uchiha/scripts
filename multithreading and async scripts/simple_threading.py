@@ -6,7 +6,7 @@ print(threading.active_count())
 current = threading.current_thread()
 print(current.getName())
 print(current.is_alive())
-# что произойдет, если попробуем еще раз его запустить
+
 try:
     current.start()
 except RuntimeError as e:
@@ -14,16 +14,14 @@ except RuntimeError as e:
 current.setName('SuperThread')
 print(current.getName())
 
-# на самом деле setName, getName - это просто старый интерфейс.
-# В реальных задачах вы смело можете работаь напрямую с атрибутом name
 current.name = 'SuperThread1'
 print(current.name)
 print(current.getName())
 
-# вывод всех запущенных и живых трэдов
+
 print(threading.enumerate())
 
-# Напишем пример для демонстрации потокобезопасного хранилища данных.
+
 thread_data = threading.local()
 thread_data.value = 5
 

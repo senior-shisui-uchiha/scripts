@@ -1,3 +1,5 @@
+#!usr/bin/env python
+
 import hashlib
 from concurrent.futures import ThreadPoolExecutor
 
